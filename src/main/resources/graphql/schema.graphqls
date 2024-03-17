@@ -1,0 +1,20 @@
+
+
+
+#To define the schema of the GraphQL API, we need to define the types and queries that the API will support.
+#To fetch the data from the database, we will define a query that will return a list of books and a query that will return a single book by its id.
+type Query{
+    getAllBooks: [BooksDetails] #return a list of books
+
+    getBookById(id: ID!): BooksDetails #id is a unique identifier
+}
+
+
+type BooksDetails{
+
+    id: ID! # "!" denotes a required field -> can't be null #id is a unique identifier
+    title: String!
+    author: String!
+    description: String
+    price: Float!
+}
