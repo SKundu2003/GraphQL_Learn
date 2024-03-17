@@ -5,6 +5,7 @@ import com.graphQL.GraphQL_Learn.request.CreateBookRequest;
 import com.graphQL.GraphQL_Learn.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +42,9 @@ public class BooksController {
 //        return ResponseEntity.ok(booksService.getBookById(id));
 //    }
 
-    @PostMapping("/add/book")
-    public ResponseEntity<?> addBook(@RequestBody CreateBookRequest createBookRequest){
-        return ResponseEntity.ok(booksService.createBook(createBookRequest));
+//    @PostMapping("/add/book")
+    @MutationMapping("addBook")
+    public BooksDetails addBook(@Argument CreateBookRequest createBookRequest){
+        return booksService.createBook(createBookRequest).get();
     }
 }

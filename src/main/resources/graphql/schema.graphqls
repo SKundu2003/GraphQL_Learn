@@ -1,4 +1,15 @@
+#FOr data insertion, we will define a mutation that will allow us to add a new book to the database.
+type Mutation{
+    addBook(createBookRequest:CreateBookRequest!): BooksDetails!
+}
 
+#CreateBookRequest is an input type that will be used to pass the data to the mutation.
+input CreateBookRequest{
+    title: String!
+    author: String!
+    description: String
+    price: Float!
+}
 
 
 #To define the schema of the GraphQL API, we need to define the types and queries that the API will support.
